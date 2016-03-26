@@ -9,7 +9,7 @@ An AngularJS spa for tracking and cataloguing the State Bar's mandatory continui
 
 Credit hours in specific curriculum categories per compliance period (usually 3 years) is mandatory for any practicing attorney or legal professional.  The State Bar or overseeing administrative entity will not catalog hours or credit earned - this is the responsibility of the law firm or self-practicing attorney, to ensure that compliance goals are met for every period.  Self-tracked compliance hours are then reported to the administrative entity.
 
-![Compliance Group Information](dpg5000.github.com/mcle-trackr/app/assets/images/compliancegroups.png)
+![Compliance Groups](http://i.imgur.com/ZJH3LEK.png)
 
 MCLE Trackr provides a single point of entry, credit-earned database for compliance reference, per attorney and per compliance curriculum requirements.  
 
