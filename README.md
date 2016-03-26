@@ -1,6 +1,11 @@
 ## MCLE TRACKR
 
-An AngularJS spa for tracking and cataloguing attorneys' mandatory continuing legal education credit hours.
+An AngularJS spa for tracking and cataloguing the State Bar's mandatory continuing legal education credit hours for practicing attorneys and legal professionals.
+
+
+## Continuing Legal Education Information
+
+[The State Bar of California's MCLE Guidelines](http://mcle.calbar.ca.gov/)
 
 ## Configuration
 
