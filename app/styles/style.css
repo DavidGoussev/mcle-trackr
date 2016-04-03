@@ -7,7 +7,7 @@
 }
 
 @media (min-width: 546px) {
-    .course-entry-comment {
+    .course-entry-course {
         position: relative;
         top: 60px;
     }

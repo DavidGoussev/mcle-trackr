@@ -7,13 +7,18 @@
     function CourseEntry(time) {
         var vm = this;
         vm.courseentries = [];
+        vm.totalTime = {};
         
         time.getTime().then(function(results){
             vm.courseentries = results;
-            console.log(vm.courseentries);
+            updateTotalTime(vm.courseentries);
         }, function(error) {
             console.log(error);
         });
+        
+        function updateTotalTime(courseentries) {
+            vm.totalTime = time.getTotalTime(courseentries);
+        }
     }
     
     angular

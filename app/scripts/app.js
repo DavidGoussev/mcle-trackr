@@ -12,11 +12,11 @@
             });
         
         $stateProvider
-            .state('mcle', {
+            .state('home', {
                 url: '/',
                 controller: 'CourseEntry',
                 controllerAs: 'vm',
-                templateUrl: '/templates/mcle.html'
+                templateUrl: '/templates/home.html'
             });
             
     }
