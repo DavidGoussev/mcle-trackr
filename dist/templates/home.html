@@ -1,65 +1,57 @@
 
-<nav>
-    <div class="nav-wrapper">
-        <div class="navbar-header">
-            <h2><a class="brand-logo" href="#">  [mcleTrackr]</a></h2>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+                <a class="brand-logo" href="#">  mcleTrackr</a>
         </div>
-    </div>
-</nav>
-    
-<div class="container">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s4">
-                    <input type="date" class="datepicker" ng-model="vm.dateIn" placeholder="enter date">
-                </div>
-                <div class="input-field col s4">
-                    <input class="validate" ng-model="vm.clockIn" placeholder="enter time">
-                </div>
-                <div class="input-field col s4">
-                    <input class="validate" ng-model="vm.categoryIn" placeholder="enter category">
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input class="validate" ng-model="vm.course" placeholder="Enter course">
-                    <button class="waves-effect waves-light btn" ng-click="vm.logNewTime()">log time</button>
-                </div>
-            </div>
-
-        </form>
+    </nav>
 </div>
 
-
 <div class="container">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s4">
+                <input type="date" class="datepicker" ng-model="vm.dateIn" placeholder="enter date">
+            </div>
+            <div class="input-field col s4">
+                <input class="validate" ng-model="vm.clockIn" placeholder="enter time">
+            </div>
+            <div class="input-field col s4">
+                <input class="validate" ng-model="vm.categoryIn" placeholder="enter category">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="validate" ng-model="vm.course" placeholder="Enter course">
+                <button class="waves-effect waves-light btn" ng-click="vm.logNewTime()">log time</button>
+            </div>
+        </div>
+
+    </form>
+
     <div class="row">
         <div ng-repeat="time in vm.courseentries">
-                <div class="col s10 card-panel grey lighten-2">
-                    <h4><i class="glyphicon glyphicon-user"></i> 
-                        {{time.user_firstname}} {{time.user_lastname}}</h4>
-                    <p><i class="glyphicon glyphicon-pencil"></i> {{time.course}}</p>                  
-                
-                    <div class="right-align">
-                        <i class="glyphicon glyphicon-calendar"></i> 
-                        {{time.loggedDate | date:'mediumDate'}}
-                            <span ng-show="time.loggedTime.duration._data.hours > 0">
-                                  {{time.loggedTime.duration._data.hours}} hour
-                                  <span ng-show="time.loggedTime.duration._data.hours > 1">s</span>
-                            </span>
-                    </div>
-                
-                </div>
+            <div class="col s10 card grey lighten-2">
+                <p>
+                    {{time.user_firstname}} {{time.user_lastname}}, {{time.user_email}}
+                </p>
+                <p><i class="tiny material-icons">mode_edit</i> {{time.course}}</p>
+            </div>
+            <div class="col s2">
+                <h6><i class="material-icons">date_range</i> {{time.loggedDate}} </h6>
+<!--                <h6> {{time.loggedTime}} </h6>-->
+            </div>
         </div>
     </div>
 
 
-    <div class="col-sm-4">
-        <div class="well time-numbers">
-                <h1><i class="glyphicon glyphicon-time"></i> total time</h1>
-                <h1><span class="label label-primary">{{vm.totalTime.hours}} hours</span></h1>
-                <h3><span class="label label-default">{{vm.totalTime.minutes}} minutes</span></h3>
+    <div class="col s12">
+        <div class="totals">
+            <h5><i class="small material-icons">query_builder</i> total time: <span>{{vm.totalTime.hours}} hours</span></h5>
         </div>
     </div>
     
+    <div class="totals">the hell is going on?</div>
+
 </div>    
-    
+

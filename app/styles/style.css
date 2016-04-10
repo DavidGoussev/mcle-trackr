@@ -10,9 +10,13 @@
     text-decoration: none;
 }
 
+.totals {
+    font-weight: 900;
+}
+
 @media (min-width: 546px) {
     .course-entry-course {
         position: relative;
-        top: 60px;
+
     }
 }

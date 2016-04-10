@@ -42,7 +42,7 @@
 
             vm.courseentries.push({
                 "user_id":1,
-                "user_email":"jsmith@law.com",
+                "user_email":"jsmith",
                 "user_firstname":"Joe",
                 "user_lastname":"Smith",
                 "loggedTime":vm.clockIn,
