@@ -3,20 +3,20 @@
 (function() {
 
     'use strict';
-
+    
     function CourseEntry(time) {
         var vm = this;
         vm.courseentries = [];
         vm.totalTime = {};
 
-        //        vm.clockIn = new Date();
         vm.clockOut = new Date();
+        $('.dropdown-button').dropdown();
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15 // Creates a dropdown of 15 years to control year
         });
-
+        
 
         time.getTime().then(function(results){
             vm.courseentries = results;
@@ -56,6 +56,7 @@
 
             vm.course = "";
         }
+        
     }
 
     angular

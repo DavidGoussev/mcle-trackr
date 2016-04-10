@@ -17,6 +17,7 @@
                 controllerAs: 'vm',
                 templateUrl: '/templates/home.html'
             });
+        
             
     }
     

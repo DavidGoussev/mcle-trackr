@@ -1,17 +1,17 @@
 {
-  "name": "bloc-frontend-project-starter",
+  "name": "mcleTrackr",
   "version": "0.0.2",
-  "description": "Starter project for the Bloc Frontend Web Development",
+  "description": "enterprise-level mandatory continuing legal education (mcle) course requirements logging program",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bloc/bloc-frontend-project-starter"
+    "url": "https://github.com/dpg5000/mcle_trackr.git"
   },
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Bloc Inc",
-  "license": "ISC",
+  "author": "dpg5000",
+  "license": "mit",
   "dependencies": {
     "hapi": "~7.5.0",
     "moment": "^2.12.0",

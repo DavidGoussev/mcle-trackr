@@ -1,11 +1,12 @@
+<nav>
+    <div class="nav-wrapper teal z-depth-2">
+        <a class="brand-logo left" href="#">mcleTrackr</a>
+        <div id="nav-mobile" class="right">
 
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-                <a class="brand-logo" href="#">  mcleTrackr</a>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
+
 
 <div class="container">
     <form class="col s12">
@@ -31,27 +32,29 @@
 
     <div class="row">
         <div ng-repeat="time in vm.courseentries">
-            <div class="col s10 card grey lighten-2">
-                <p>
-                    {{time.user_firstname}} {{time.user_lastname}}, {{time.user_email}}
-                </p>
-                <p><i class="tiny material-icons">mode_edit</i> {{time.course}}</p>
-            </div>
-            <div class="col s2">
-                <h6><i class="material-icons">date_range</i> {{time.loggedDate}} </h6>
-<!--                <h6> {{time.loggedTime}} </h6>-->
+            <div class="col s12 card grey lighten-2">
+                <p>{{time.user_firstname}} {{time.user_lastname}}, {{time.user_email}}</p>
+                <span>
+                    <p class="left"><i class="tiny material-icons">mode_edit</i> {{time.course}}</p>
+
+                    <p class="right">xxx{{time.loggedDate}} </p>
+                </span>
             </div>
         </div>
     </div>
 
 
     <div class="col s12">
-        <div class="totals">
+        <div class="totals right">
             <h5><i class="small material-icons">query_builder</i> total time: <span>{{vm.totalTime.hours}} hours</span></h5>
         </div>
     </div>
     
     <div class="totals">the hell is going on?</div>
 
-</div>    
 
+
+</div>   
+
+
+   

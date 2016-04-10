@@ -10,6 +10,12 @@
     text-decoration: none;
 }
 
+nav .brand-logo {
+  font-size: 2.6rem;
+  padding: 0.2rem;
+  text-shadow: 1px 1px 8px #696969;
+}
+
 .totals {
     font-weight: 900;
 }
