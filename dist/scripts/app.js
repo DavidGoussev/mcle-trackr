@@ -22,7 +22,7 @@
     }
     
     angular
-        .module('mcleTrackr', ['ui.router', 'ui.bootstrap', 'ngResource'])
+        .module('mcleTrackr', ['ui.router', 'ngResource'])
         .config(config);
 
 })();

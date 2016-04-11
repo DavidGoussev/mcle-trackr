@@ -1,18 +1,20 @@
 <nav>
     <div class="nav-wrapper teal z-depth-2">
-        <a class="brand-logo left" href="#">mcleTrackr</a>
-        <div id="nav-mobile" class="right">
+        <a class="brand-logo right" href="#">mcleTrackr</a>
+            
 
-        </div>
+
+            
+
     </div>
 </nav>
 
 
 <div class="container">
-    <form class="col s12">
+    <form name="courseForm" class="col s12">
         <div class="row">
             <div class="input-field col s4">
-                <input type="date" class="datepicker" ng-model="vm.dateIn" placeholder="enter date">
+                <input type="text" class="datepicker" ng-model="vm.dateIn" placeholder="enter date">
             </div>
             <div class="input-field col s4">
                 <input class="validate" ng-model="vm.clockIn" placeholder="enter time">
@@ -37,7 +39,7 @@
                 <span>
                     <p class="left"><i class="tiny material-icons">mode_edit</i> {{time.course}}</p>
 
-                    <p class="right">xxx{{time.loggedDate}} </p>
+                    <p class="right">xxx {{time.dateIn}}, {{time.clockIn}} <small>hrs</small></p>
                 </span>
             </div>
         </div>
@@ -51,10 +53,24 @@
     </div>
     
     <div class="totals">the hell is going on?</div>
+    
 
+
+          
 
 
 </div>   
 
+
+
+  <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+  </ul>
 
    
