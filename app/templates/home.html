@@ -1,11 +1,6 @@
 <nav>
     <div class="nav-wrapper teal z-depth-2">
         <a class="brand-logo right" href="#">mcleTrackr</a>
-            
-
-
-            
-
     </div>
 </nav>
 
@@ -45,7 +40,6 @@
         </div>
     </div>
 
-
     <div class="col s12">
         <div class="totals right">
             <h5><i class="small material-icons">query_builder</i> total time: <span>{{vm.totalTime.hours}} hours</span></h5>
@@ -54,23 +48,10 @@
     
     <div class="totals">the hell is going on?</div>
     
-
-
-          
-
-
 </div>   
 
-
-
-  <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
-
-  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">three</a></li>
-  </ul>
+<select class="browser-default" ng-model="select.value2">
+    <option ng-repeat="value in select.choices">{{value}}</option>
+</select>
 
    

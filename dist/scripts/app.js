@@ -22,7 +22,7 @@
     }
     
     angular
-        .module('mcleTrackr', ['ui.router', 'ngResource'])
+        .module('mcleTrackr', ['firebase', 'ui.router', 'ui.materialize', 'ngResource'])
         .config(config);
 
 })();

@@ -20,6 +20,11 @@ nav .brand-logo {
     font-weight: 900;
 }
 
+.browser-default {
+    width: 300px;
+
+}
+
 .dropdown {
     position: relative;
     display: inline-block;

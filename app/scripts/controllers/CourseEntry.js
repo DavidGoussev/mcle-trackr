@@ -4,11 +4,10 @@
 
     'use strict';
 
-    function CourseEntry(time) {
+    function CourseEntry($scope, $firebaseArray, time, Timekeeper) {
         var vm = this;
         vm.courseentries = [];
         vm.totalTime = {};
-
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
@@ -21,7 +20,6 @@
                     this.close();
                 }
             }
-
         });
 
         $('.dropdown-button').dropdown({
@@ -34,8 +32,6 @@
             alignment: 'left' // Displays dropdown with edge aligned to the left of button
             }
         );
-
-
 
         time.getTime().then(function(results){
             vm.courseentries = results;
@@ -78,11 +74,10 @@
             vm.clockIn = "";
 //            vm.courseForm.$setPristine();
         }
-
     }
 
     angular
         .module('mcleTrackr')
-        .controller('CourseEntry', CourseEntry);
+        .controller('CourseEntry', ['$scope', '$firebaseArray', 'Timekeeper', 'time', CourseEntry]);
 
 })();
