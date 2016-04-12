@@ -8,6 +8,23 @@
         var vm = this;
         vm.courseentries = [];
         vm.totalTime = {};
+        
+        $scope.timekeepers = Timekeeper.all;
+        
+        $scope.selected = {
+            timekeeper: $scope.timekeepers[0],
+        };
+        
+        $scope.changeTimekeeper = function changeTimekeeper(timekeeper) {
+            $scope.selected.timekeeper = timekeeper;
+//            $scope.listCourses = Timekeeper.getCourses(timekeeper.$id);
+        };        
+        
+        $scope.deleteTimekeeper = function(timekeeper) {
+            Timekeeper.delete(timekeeper).then(function(data){
+                console.log('Timekeeper deleted!');
+            })
+        };
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
@@ -78,6 +95,6 @@
 
     angular
         .module('mcleTrackr')
-        .controller('CourseEntry', ['$scope', '$firebaseArray', 'Timekeeper', 'time', CourseEntry]);
+        .controller('CourseEntry', ['$scope', '$firebaseArray', 'time', 'Timekeeper', CourseEntry]);
 
 })();

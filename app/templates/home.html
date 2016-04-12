@@ -1,11 +1,32 @@
 <nav>
     <div class="nav-wrapper teal z-depth-2">
-        <a class="brand-logo right" href="#">mcleTrackr</a>
+        <div class="row">
+            <a class="brand-logo right" href="#">mcleTrackr</a>
+            <div class="section col s6 left">
+                <select class="browser-default" ng-model="select.value1" material-select watch>
+                    <option value="" disabled selected>select timekeeper</option>
+                    <option ng-repeat="username in select.choices">{{username}}</option>
+                </select>
+            </div>
+        </div>
     </div>
 </nav>
 
 
+<!--
+        <div class="section col s4">
+            <select class="" ng-model="select.value1" material-select watch>
+                <option ng-repeat="value in select.choices">{{value}}</option>
+            </select>
+        </div>
+
+            <div class="section col s5">
+                <b>you selected{{select.value1}}</b>
+            </div>
+-->
+
 <div class="container">
+    
     <form name="courseForm" class="col s12">
         <div class="row">
             <div class="input-field col s4">

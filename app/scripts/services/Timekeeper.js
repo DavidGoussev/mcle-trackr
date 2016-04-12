@@ -28,6 +28,6 @@
     }
     
     angular
-        .module('angularChat')
+        .module('mcleTrackr')
         .factory('Timekeeper', ['$firebaseArray', Timekeeper]);
 })();
