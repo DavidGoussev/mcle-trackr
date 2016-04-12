@@ -3,9 +3,9 @@
         <div class="row">
             <a class="brand-logo right" href="#">mcleTrackr</a>
             <div class="section col s6 left">
-                <select class="browser-default" ng-model="select.value1" material-select watch>
+                <select class="browser-default" ng-model="selected.timekeeper" material-select watch>
                     <option value="" disabled selected>select timekeeper</option>
-                    <option ng-repeat="username in select.choices">{{username}}</option>
+                    <option ng-repeat="timekeeper in timekeepers">{{timekeeper.username}}</option>
                 </select>
             </div>
         </div>
@@ -19,11 +19,11 @@
                 <option ng-repeat="value in select.choices">{{value}}</option>
             </select>
         </div>
+-->
 
             <div class="section col s5">
-                <b>you selected{{select.value1}}</b>
+                <b>you selected: {{selected.timekeeper}}</b>
             </div>
--->
 
 <div class="container">
     
@@ -43,6 +43,7 @@
             <div class="input-field col s12">
                 <input class="validate" ng-model="vm.course" placeholder="Enter course">
                 <button class="waves-effect waves-light btn" ng-click="vm.logNewTime()">log time</button>
+                <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
             </div>
         </div>
 
@@ -69,10 +70,22 @@
     
     <div class="totals">the hell is going on?</div>
     
-</div>   
+</div>
 
-<select class="browser-default" ng-model="select.value2">
-    <option ng-repeat="value in select.choices">{{value}}</option>
-</select>
+
+
+<div ng-controller="ModalCtrl">
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h3>add timekeeper</h3>
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="enter first initial last name (jsmith) format"ng-submit="addTimekeeper()" ng-model="timekeeper.username">
+                </div>
+        </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">cancel</a>
+        <button class="waves-effect waves-green btn-flat" type="button" ng-click="ok()">add</button>
+    </div>
+</div>
 
    

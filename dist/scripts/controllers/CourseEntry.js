@@ -25,6 +25,7 @@
                 console.log('Timekeeper deleted!');
             })
         };
+        
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
