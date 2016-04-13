@@ -4,7 +4,7 @@
 
     'use strict';
 
-    function CourseEntry($scope, $firebaseArray, time, Timekeeper) {
+    function CourseEntry($scope, $firebaseArray, time, Timekeeper, Course) {
         var vm = this;
         vm.courseentries = [];
         vm.totalTime = {};
@@ -12,12 +12,12 @@
         $scope.timekeepers = Timekeeper.all;
         
         $scope.selected = {
-            timekeeper: $scope.timekeepers[0],
+            timekeeper: $scope.timekeepers[1],
         };
         
         $scope.changeTimekeeper = function changeTimekeeper(timekeeper) {
             $scope.selected.timekeeper = timekeeper;
-//            $scope.listCourses = Timekeeper.getCourses(timekeeper.$id);
+            $scope.listCourses = Timekeeper.getCourses(timekeeper.$id);
         };        
         
         $scope.deleteTimekeeper = function(timekeeper) {
@@ -25,6 +25,24 @@
                 console.log('Timekeeper deleted!');
             })
         };
+        
+        $scope.addCourse = function(){
+            Course.send({
+                username: $scope.selected.timekeeper.$id,
+                course: $scope.newCourse,
+                date: vm.dateIn,
+                hours: vm.clockIn,
+                enteredAt: Date(Firebase.ServerValue.TIMESTAMP*1000)
+            }).then(function(data){
+                $scope.newCourse = '';
+                console.log('entry created!');
+            })
+        };   
+        
+        $scope.changeTimekeeper = function changeTimepicker(timekeeper) {
+            $scope.selected.timekeeper = timekeeper;
+            $scope.listCourses = Timekeeper.getCourses(timekeeper.$id);
+        };        
         
 
         $('.datepicker').pickadate({
@@ -96,6 +114,6 @@
 
     angular
         .module('mcleTrackr')
-        .controller('CourseEntry', ['$scope', '$firebaseArray', 'time', 'Timekeeper', CourseEntry]);
+        .controller('CourseEntry', ['$scope', '$firebaseArray', 'time', 'Timekeeper', 'Course', CourseEntry]);
 
 })();

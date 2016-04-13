@@ -20,6 +20,10 @@ nav .brand-logo {
     font-weight: 900;
 }
 
+.selected-user {
+    color: #D3D3D3;
+}
+
 select.browser-default {
     display: inline-block
 }
@@ -32,6 +36,7 @@ select {
     height: 1.8rem;
     align-content: center;
     color: #696969;
+}
 
 .dropdown {
     position: relative;

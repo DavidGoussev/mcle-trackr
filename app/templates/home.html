@@ -5,7 +5,7 @@
             <div class="section col s6 left">
                 <select class="browser-default" ng-model="selected.timekeeper" material-select watch>
                     <option value="" disabled selected>select timekeeper</option>
-                    <option ng-repeat="timekeeper in timekeepers">{{timekeeper.username}}</option>
+                    <option ng-repeat="timekeeper in timekeepers | orderBy:['lastname','firstname']" ng-click="changeTimekeeper(timekeeper)">{{timekeeper.username}}</option>
                 </select>
             </div>
         </div>
@@ -21,11 +21,11 @@
         </div>
 -->
 
-            <div class="section col s5">
-                <b>you selected: {{selected.timekeeper}}</b>
-            </div>
 
 <div class="container">
+    <div class="selected-user section col s5">
+        <b>{{selected.timekeeper}}</b>
+    </div>
     
     <form name="courseForm" class="col s12">
         <div class="row">
@@ -49,12 +49,26 @@
 
     </form>
 
+<!--
     <div class="row">
         <div ng-repeat="time in vm.courseentries">
             <div class="col s12 card grey lighten-2">
                 <p>{{time.user_firstname}} {{time.user_lastname}}, {{time.user_email}}</p>
                 <span>
                     <p class="left"><i class="tiny material-icons">mode_edit</i> {{time.course}}</p>
+
+                    <p class="right">xxx {{time.dateIn}}, {{time.clockIn}} <small>hrs</small></p>
+                </span>
+            </div>
+        </div>
+    </div>
+-->
+    <div class="row">
+        <div ng-repeat="listCourse in listCourses">
+            <div class="col s12 card grey lighten-2">
+                <p>{{listCourse.username}} {{time.user_lastname}}, {{time.user_email}}</p>
+                <span>
+                    <p class="left"><i class="tiny material-icons">mode_edit</i> {{listCourse.course}}</p>
 
                     <p class="right">xxx {{time.dateIn}}, {{time.clockIn}} <small>hrs</small></p>
                 </span>
@@ -77,13 +91,23 @@
 <div ng-controller="ModalCtrl">
     <div id="modal1" class="modal">
         <div class="modal-content">
-            <h3>add timekeeper</h3>
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="enter first initial last name (jsmith) format"ng-submit="addTimekeeper()" ng-model="timekeeper.username">
+            <h4>add timekeeper</h4>
+                <div class="row">
+                    <div class="input-class col s8">
+                        <input class="form-control" type="text" placeholder="enter email" ng-model="timekeeper.username">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-class col s4">
+                        <input class="form-control" type="text" placeholder="enter first name" ng-model="timekeeper.firstname">
+                    </div>
+                    <div class="input-class col s4">
+                        <input class="form-control" type="text" placeholder="enter last name" ng-model="timekeeper.lastname">
+                    </div>
                 </div>
         </div>
     <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">cancel</a>
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat">cancel</a>
         <button class="waves-effect waves-green btn-flat" type="button" ng-click="ok()">add</button>
     </div>
 </div>

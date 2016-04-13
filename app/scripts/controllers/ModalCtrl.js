@@ -7,6 +7,8 @@
         $scope.addTimekeeper = function(){
             Timekeeper.create($scope.timekeeper).then(function(data){
                 $scope.timekeeper.username = '';
+                $scope.timekeeper.firstname = '';
+                $scope.timekeeper.lastname = '';
                 console.log('timekeeper created!');
             })
         };
