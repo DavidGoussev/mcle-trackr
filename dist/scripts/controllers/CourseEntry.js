@@ -12,7 +12,7 @@
         $scope.timekeepers = Timekeeper.all;
         
         $scope.selected = {
-            timekeeper: $scope.timekeepers[1],
+            timekeeper: $scope.timekeepers[0],
         };
         
         $scope.changeTimekeeper = function changeTimekeeper(timekeeper) {
@@ -28,18 +28,20 @@
         
         $scope.addCourse = function(){
             Course.send({
-                username: $scope.selected.timekeeper.$id,
-                course: $scope.newCourse,
+                timekeeperId: $scope.selected.timekeeper.$id,
+                course: vm.course,
                 date: vm.dateIn,
                 hours: vm.clockIn,
                 enteredAt: Date(Firebase.ServerValue.TIMESTAMP*1000)
             }).then(function(data){
-                $scope.newCourse = '';
+                vm.course = '';
+                vm.dateIn = '';
+                vm.clockIn = '';
                 console.log('entry created!');
             })
         };   
         
-        $scope.changeTimekeeper = function changeTimepicker(timekeeper) {
+        $scope.changeTimekeeper = function changeTimekeeper(timekeeper) {
             $scope.selected.timekeeper = timekeeper;
             $scope.listCourses = Timekeeper.getCourses(timekeeper.$id);
         };        

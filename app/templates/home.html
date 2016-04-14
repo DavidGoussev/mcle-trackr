@@ -3,9 +3,9 @@
         <div class="row">
             <a class="brand-logo right" href="#">mcleTrackr</a>
             <div class="section col s6 left">
-                <select class="browser-default" ng-model="selected.timekeeper" material-select watch>
+                <select class="browser-default" ng-model="timekeeper" ng-options="timekeeper as timekeeper.username for timekeeper in timekeepers | orderBy:['lastname','firstname']" ng-change="changeTimekeeper(timekeeper)" material-select watch>
                     <option value="" disabled selected>select timekeeper</option>
-                    <option ng-repeat="timekeeper in timekeepers | orderBy:['lastname','firstname']" ng-click="changeTimekeeper(timekeeper)">{{timekeeper.username}}</option>
+
                 </select>
             </div>
         </div>
@@ -19,13 +19,20 @@
                 <option ng-repeat="value in select.choices">{{value}}</option>
             </select>
         </div>
+
+ng-model="selected.timekeeper"
+
+                    <option value="{{timekeeper}}" ng-repeat="(timekeeperId, timekeeper) in timekeepers | orderBy:['lastname','firstname']">
+
+                    <option value="{{timekeeper}}" ng-repeat="(timekeeperId, timekeeper) in timekeepers | orderBy:['lastname','firstname']">
+
+                            {{timekeeper.username}}
+                    
+                    </option>
 -->
 
 
 <div class="container">
-    <div class="selected-user section col s5">
-        <b>{{selected.timekeeper}}</b>
-    </div>
     
     <form name="courseForm" class="col s12">
         <div class="row">
@@ -42,12 +49,16 @@
         <div class="row">
             <div class="input-field col s12">
                 <input class="validate" ng-model="vm.course" placeholder="Enter course">
-                <button class="waves-effect waves-light btn" ng-click="vm.logNewTime()">log time</button>
+                <button class="waves-effect waves-light btn" ng-click="addCourse()">log time</button>
                 <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
             </div>
         </div>
 
     </form>
+    
+    <div class="selected-user section col s5">
+        <h5>{{ timekeeper.lastname }}, {{ timekeeper.firstname }}</h5>
+    </div>
 
 <!--
     <div class="row">
@@ -62,6 +73,14 @@
             </div>
         </div>
     </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="validate" ng-model="vm.course" placeholder="Enter course">
+                <button class="waves-effect waves-light btn" ng-click="vm.logNewTime()">log time</button>
+                <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
+            </div>
+        </div>
 -->
     <div class="row">
         <div ng-repeat="listCourse in listCourses">
