@@ -1,17 +1,27 @@
 (function() {
     function ModalCtrl($scope, Timekeeper) {
-        $('.modal-trigger').leanModal();
+        
+        $('.modal-trigger').leanModal({
+            ready: function() {
+                $scope.timekeeper = '';
+            }
+        });
         
         $scope.timekeepers = Timekeeper.all;
         
         $scope.addTimekeeper = function(){
-            Timekeeper.create($scope.timekeeper).then(function(data){
-                $scope.timekeeper.username = '';
-                $scope.timekeeper.firstname = '';
-                $scope.timekeeper.lastname = '';
+            Timekeeper.send({
+                username: $scope.username,
+                firstname: $scope.firstname,
+                lastname: $scope.lastname,
+            }).then(function(data){
+                $scope.username = '';
+                $scope.firstname = '';
+                $scope.lastname = '';
                 console.log('timekeeper created!');
             })
         };
+        
         
         $scope.ok = function () {
             $scope.addTimekeeper();

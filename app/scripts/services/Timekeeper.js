@@ -10,7 +10,7 @@
             
 //            messages: messages,
             
-            create: function(newTimekeeper) {
+            send: function(newTimekeeper) {
                 return timekeepers.$add(newTimekeeper)
             },
             

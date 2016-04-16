@@ -13,7 +13,7 @@
         $stateProvider
             .state('home', {
                 url: '/',
-                controller: 'CourseEntry',
+                controller: 'HomeCtrl',
                 controllerAs: 'vm',
                 templateUrl: '/templates/home.html'
             });
@@ -22,7 +22,7 @@
     }
     
     angular
-        .module('mcleTrackr', ['firebase', 'ui.router', 'ui.materialize', 'ngResource'])
+        .module('mcleTrackr', ['firebase', 'ui.router', 'ui.materialize', 'ngResource', 'totalFilter'])
         .config(config);
 
 })();
