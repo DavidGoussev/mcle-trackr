@@ -16,74 +16,67 @@
 
 <div class="container">
     
-    <form name="courseForm" class="col s12">
+    <form name="courseForm" class="col s12" ng-show="timekeeper">
+        <br>
         <div class="row">
             <div class="input-field col s4">
-                <input type="text" class="datepicker" ng-model="vm.dateIn" placeholder="enter date">
+                <input type="text" class="datepicker" ng-model="vm.dateIn" id="lblDate">
+                <label for="lblDate">activity date</label>
             </div>
             <div class="input-field col s4">
-                <input class="number" ng-model="vm.clockIn" placeholder="enter time" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01">
+                <input class="validate" type="text" ng-model="vm.clockIn" id="lblHours" value="0.00" step="0.01" />
+                <label for="lblHours" data-error="must be valid integer">hours done (00.00)</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s4">
-                <select ng-model="vm.categoryIn" placeholder="enter category">
-                    <option value="" disabled selected>enter category</option>
-                    <option value="1">standard</option>
+                <select class="" ng-model="vm.categoryIn" id="lblCategory">
+                    <option value="" disabled selected></option>
+                    <option value="1">regular</option>
                     <option value="2">legal ethics</option>
-                    <option value="3">elim of bias</option>
-                    <option value="4">competenence</option>
+                    <option value="3">competence</option>
+                    <option value="4">elim. of bias</option>
                 </select>
+                <label for="lblCategory">activity category</label>
             </div>
             <div class="input-field col s4">
-                <input class="validate" ng-model="vm.studyIn" placeholder="enter study type">
+                <select class="" ng-model="vm.studyIn" id="lblStudy">
+                    <option value="" disabled selected></option>
+                    <option value="1">participatory</option>
+                    <option value="2">self-study</option>
+                </select>
+                <label for="lblStudy">study type</label>
             </div>
             <div class="input-field col s4">
-                <input class="validate" ng-model="vm.providerIn" placeholder="enter provider">
+                <input class="validate" type="text" ng-model="vm.providerIn" id="lblProvider">
+                <label for="lblProvider">activity provider</label>
             </div>
         </div>
         <div class="input-field col s12">
-                <input class="validate" ng-model="vm.course" placeholder="enter course">
+                <input class="validate" ng-model="vm.course" id="lblCourse" type="text">
+                <label for="lblCourse">activity name</label>
                 <button class="waves-effect waves-light btn" ng-click="addCourse()">log time</button>
                 <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
         </div>
 
     </form>
-    {{vm.categoryIn}}
+ 
     <div class="selected-user section col s5" ng-show="timekeeper">
         <h5>{{ timekeeper.lastname }}, {{ timekeeper.firstname }} </h5>
     </div>
 
-<!--
-    <div class="row">
-        <div ng-repeat="time in vm.courseentries">
-            <div class="col s12 card grey lighten-2">
-                <p>{{time.user_firstname}} {{time.user_lastname}}, {{time.user_email}}</p>
-                <span>
-                    <p class="left"><i class="tiny material-icons">mode_edit</i> {{time.course}}</p>
 
-                    <p class="right">xxx {{time.dateIn}}, {{time.clockIn}} <small>hrs</small></p>
-                </span>
-            </div>
-        </div>
-    </div>
-
-        <div class="row">
-            <div class="input-field col s12">
-                <input class="validate" ng-model="vm.course" placeholder="Enter course">
-                <button class="waves-effect waves-light btn" ng-click="vm.logNewTime()">log time</button>
-                <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
-            </div>
-        </div>
--->
     <div class="row">
         <div ng-repeat="listCourse in listCourses">
             <div class="col s12 card grey lighten-2">
-                <p>{{listCourse.username}}</p>
-                <span>
-                    <p class="left"><i class="tiny material-icons">mode_edit</i> {{listCourse.course}}</p>
-
-                    <p class="right"> {{listCourse.date}}, {{listCourse.hours | setDecimal:2}} <small>hrs</small></p>
+                <span class="row">
+                    <br>
+                    <div class="left"><b><i class="tiny material-icons">mode_edit</i>{{listCourse.course}}</b></div>
+                    <div class="right"><b>{{listCourse.date}}</b></div>
+                </span>
+                <span class="row">
+                    <div class="left"><small>Provider: {{listCourse.provider}} | {{listCourse.category}} | {{listCourse.study}}</small></div>
+                    <div class="right">{{listCourse.hours | setDecimal:2}} <small>hrs</small></div>
                 </span>
             </div>
         </div>
@@ -95,7 +88,16 @@
         </div>
     </div>
     
-    <div class="totals">the hell is going on?</div>
+    <div class="totals" ng-hide="timekeeper">
+        <div class="left">
+            select timekeeper to get started
+            <br>
+            <small>mcleTrackr developed by David Goussev (@dpg5000)</small>
+        </div>
+        <div class="right">
+            <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
+        </div>
+    </div>
     
 </div>
 

@@ -28,8 +28,9 @@
             Course.send({
                 timekeeperId: $scope.selected.timekeeper.$id,
                 course: vm.course,
-//                provider: vm.provider,
-//                category: vm.category,
+                provider: vm.providerIn,
+                category: $( "#lblCategory option:selected" ).text(),
+                study: $( "#lblStudy option:selected" ).text(),
                 date: vm.dateIn,
                 hours: vm.clockIn,
                 enteredAt: Date(Firebase.ServerValue.TIMESTAMP*1000)
@@ -37,6 +38,9 @@
                 vm.course = '';
                 vm.dateIn = '';
                 vm.clockIn = '';
+                vm.categoryIn = '';
+                vm.studyIn = '';
+                vm.providerIn = '';
                 console.log('entry created!');
             })
         };   
@@ -66,9 +70,11 @@
             }
         );
         
+        
         $(document).ready(function() {
             $('select').material_select();
         });
+
 
     }
 

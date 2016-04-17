@@ -38,6 +38,12 @@ select {
     color: #696969;
 }
 
+
+#choice option { color: #999; }
+.empty { color: #999; }
+
+
+
 .dropdown {
     position: relative;
     display: inline-block;
