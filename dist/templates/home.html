@@ -1,21 +1,22 @@
-<nav>
-    <div class="nav-wrapper teal z-depth-2">
-        <div class="row">
-            <a class="brand-logo right" href="#">mcleTrackr</a>
-            <div class="section col s6 left">
-                <select class="browser-default" ng-model="timekeeper" ng-options="timekeeper as timekeeper.username for timekeeper in timekeepers | orderBy:['lastname','firstname']" ng-change="changeTimekeeper(timekeeper)" material-select watch>
-                    <option value="" disabled selected>select timekeeper</option>
+<header>
+    <nav>
+        <div class="nav-wrapper teal z-depth-2">
+            <div class="row">
+                <a class="brand-logo right" href="#">mcleTrackr</a>
+                <div class="section col s6 left">
+                    <select class="browser-default" ng-model="timekeeper" ng-options="timekeeper as timekeeper.username for timekeeper in timekeepers | orderBy:['lastname','firstname']" ng-change="changeTimekeeper(timekeeper)" material-select watch>
+                        <option value="" disabled selected>select timekeeper</option>
 
-                </select>
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 
 
-
+<main>
 <div class="container">
-    
     <form name="courseForm" class="col s12" ng-show="timekeeper">
         <br>
         <div class="row">
@@ -55,10 +56,13 @@
         <div class="input-field col s12">
                 <input class="validate" ng-model="vm.course" id="lblCourse" type="text">
                 <label for="lblCourse">activity name</label>
-                <button class="waves-effect waves-light btn" ng-click="addCourse()">log time</button>
-                <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
         </div>
-
+        <div class="row">
+            <br>
+            <button class="waves-effect waves-light btn" ng-click="addCourse()">log activity time</button>
+            <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
+            <button class="modal-trigger waves-effect waves-light btn" data-target="modal2">edit timekeeper</button>  
+        </div>
     </form>
  
     <div class="selected-user section col s5" ng-show="timekeeper">
@@ -84,24 +88,62 @@
 
     <div class="col s12">
         <div class="totals right" ng-show="timekeeper">
-            <h5><i class="small material-icons">query_builder</i> total time: <span>{{listCourses|total:'hours'|setDecimal:2}} hours</span></h5>
+            <h5><i class="small material-icons">query_builder</i> total time: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|total:'hours'|setDecimal:2}}</a> | hours needed: {{ timekeeper.hrsReqTotal - listCourses|total:'hours' }}</span></h5>
+            xxx{{hrsDone}}
         </div>
     </div>
-    
-    <div class="totals" ng-hide="timekeeper">
-        <div class="left">
-            select timekeeper to get started
-            <br>
-            <small>mcleTrackr developed by David Goussev (@dpg5000)</small>
-        </div>
-        <div class="right">
-            <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
-        </div>
-    </div>
-    
 </div>
+    
+<div class="col s12" ng-hide="timekeeper">
+    <div class="row">
+        <div class="col s4">
+            <div class="center promo promo-example">
+                <i class="material-icons">flash_on</i>
+                <p class="promo-caption">Robust MCLE management</p>
+                <p class="light center">
+                    Easily and efficiently manage your enterprise MCLE requirements, ensuring all your timekeepers stay in compliance with regulatory requirements.
+                </p>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="center promo promo-example">
+                <i class="modal-trigger material-icons" data-target="modal1">group</i>
+                <p class="promo-caption">Select timekeeper to get started</p>
+                <p class="light center">
+                    Click on above icon to create new timekeeper, or select existing timekeeper from dropdown.
+                </p>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="center promo promo-example">
+                <i class="material-icons">settings</i>
+                <p class="promo-caption">Intuitive user experience</p>
+                <p class="light center">
+                    Utilizes fundamentals and aesthetic concepts of Material Design, aiding user experience for both mobile and standard layouts.
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</main>
 
-
+<footer class="page-footer" ng-hide="timekeeper">
+    <div class="footer-copyright z-depth-2">
+        <div class="container left">
+            <iframe src="http://ghbtns.com/github-btn.html?user=dpg5000&type=follow&count=true&size=large" height="30" width="240" frameborder="0" scrolling="0" style="width:240px; height: 30px;" allowTransparency="true"></iframe>
+        </div>
+    </div>
+</footer>
 
 <div ng-controller="ModalCtrl">
     <div id="modal1" class="modal">
@@ -109,21 +151,92 @@
             <h4>add timekeeper</h4>
                 <div class="row">
                     <div class="input-class col s8">
-                        <input class="form-control" type="text" placeholder="enter email" ng-model="username">
+                        <input id="lblUsername" class="form-control" type="email" ng-model="username">
+                        <label for="lblUsername">enter email</label>  
+                    </div>
+                    <div class="input-class col s1">
+                        <input id="lblHrsReqTotal" class="form-control" type="text" ng-model="hrsReqTotal">
+                        <label for="lblHrsReqTotal">hrs_req</label>
+                    </div>
+                    <div class="input-class col s1">
+                        <input id="lblHrsReqEthics" class="form-control" type="text" ng-model="hrsReqEthics">
+                        <label for="lblHrsReqEthics">ethc</label>
+                    </div>
+                    <div class="input-class col s1">
+                        <input id="lblHrsReqComp" class="form-control" type="text" ng-model="hrsReqComp">
+                        <label for="lblHrsReqComp">comp</label>
+                    </div>
+                    <div class="input-class col s1">
+                        <input id="lblHrsReqBias" class="form-control" type="text" ng-model="hrsReqBias">
+                        <label for="lblHrsReqBias">bias</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-class col s4">
-                        <input class="form-control" type="text" placeholder="enter first name" ng-model="firstname">
+                        <input class="form-control" id="lblFirstname" type="text" ng-model="firstname">
+                        <label for="lblFirstname">enter first name</label>
                     </div>
-                    <div class="input-class col s4">
-                        <input class="form-control" type="text" placeholder="enter last name" ng-model="lastname">
+                    <div class="input-class col s6">
+                        <input class="form-control" id="lblLastname" type="text" ng-model="lastname">
+                        <label for="lblLastname">enter last name</label>
+                    </div>
+                    <div class="input-class col s2">
+                        <input class="form-control" id="lblGroup" type="number" ng-model="group">
+                        <label for="lblGroup">enter group#</label>
                     </div>
                 </div>
         </div>
     <div class="modal-footer">
         <a href="" class="modal-action modal-close waves-effect waves-green btn-flat">cancel</a>
         <button class="waves-effect waves-green btn-flat" type="button" ng-click="ok()">add</button>
+    </div>
+</div>
+
+<div ng-controller="ModalCtrl">
+   <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4>edit timekeeper</h4>
+                <div class="row">
+                    <div class="input-class col s8">
+                        <input id="lblUsername" class="form-control" type="email" ng-model="timekeeper.username">
+                        <label for="lblUsername">enter email</label>  
+                    </div>
+                    <div class="input-class col s1">
+                        <input id="lblHrsReqTotal" class="form-control" type="text" ng-model="timekeeper.hrsReqTotal">
+                        <label for="lblHrsReqTotal">hrs_req</label>
+                    </div>
+                    <div class="input-class col s1">
+                        <input id="lblHrsReqEthics" class="form-control" type="text" ng-model="timekeeper.hrsReqEthics">
+                        <label for="lblHrsReqEthics">ethc</label>
+                    </div>
+                    <div class="input-class col s1">
+                        <input id="lblHrsReqComp" class="form-control" type="text" ng-model="timekeeper.hrsReqComp">
+                        <label for="lblHrsReqComp">comp</label>
+                    </div>
+                    <div class="input-class col s1">
+                        <input id="lblHrsReqBias" class="form-control" type="text" ng-model="timekeeper.hrsReqBias">
+                        <label for="lblHrsReqBias">bias</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-class col s4">
+                        <input class="form-control" id="lblFirstname" type="text" ng-model="timekeeper.firstname">
+                        <label for="lblFirstname">enter first name</label>
+                    </div>
+                    <div class="input-class col s6">
+                        <input class="form-control" id="lblLastname" type="text" ng-model="timekeeper.lastname">
+                        <label for="lblLastname">enter last name</label>
+                    </div>
+                    <div class="input-class col s2">
+                        <input class="form-control" id="lblGroup" type="number" ng-model="timekeeper.group">
+                        <label for="lblGroup">enter group#</label>
+                    </div>
+                </div>
+        </div>
+    <div class="modal-footer">
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat">cancel</a>
+        <button class="waves-effect waves-green btn-flat" type="button" ng-click="editTimekeeper(timekeeper)">edit</button>
+
     </div>
 </div>
 

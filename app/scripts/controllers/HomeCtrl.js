@@ -4,7 +4,7 @@
     
     'use strict';
 
-    function HomeCtrl($scope, $filter, $firebaseArray, Timekeeper, Course) {
+    function HomeCtrl($scope, $filter, $firebaseArray, Timekeeper, Course, totalFilter) {
         var vm = this;
         
         $scope.timekeepers = Timekeeper.all;
@@ -18,11 +18,21 @@
             $scope.listCourses = Timekeeper.getCourses(timekeeper.$id);
         };        
         
+        $scope.editTimekeeper = function editTimekeeper(timekeeper) {
+           timekeeper.$save();
+        };  
+        
         $scope.deleteTimekeeper = function(timekeeper) {
             Timekeeper.delete(timekeeper).then(function(data){
                 console.log('Timekeeper deleted!');
             })
         };
+        
+        $scope.hrsTotalNeeded = function() {
+            return parseFloat(timekeeper.hrsReqTotal) - parseFloat($scope.hrsDone);
+        };
+        
+
         
         $scope.addCourse = function(){
             Course.send({
@@ -80,6 +90,6 @@
 
     angular
         .module('mcleTrackr')
-        .controller('HomeCtrl', ['$scope', '$filter', '$firebaseArray', 'Timekeeper', 'Course', HomeCtrl]);
+        .controller('HomeCtrl', ['$scope', '$filter', '$firebaseArray', 'Timekeeper', 'Course', 'totalFilter', HomeCtrl]);
 
 })();

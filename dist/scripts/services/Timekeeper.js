@@ -2,16 +2,17 @@
     function Timekeeper($firebaseArray) {
         var firebaseRef = new Firebase("https://mcletrackr.firebaseio.com");
         var timekeepers = $firebaseArray(firebaseRef.child('timekeepers'));
-//        var messages = $firebaseArray(firebaseRef.child('messages'));
         
         
         return {
             all: timekeepers,
             
-//            messages: messages,
-            
             send: function(newTimekeeper) {
                 return timekeepers.$add(newTimekeeper)
+            },
+            
+            edit: function(timekeeper) {
+                return timekeepers.$save(timekeeper)
             },
             
             getCourses: function(timekeeperId) {
