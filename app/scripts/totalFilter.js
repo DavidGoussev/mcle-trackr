@@ -24,3 +24,13 @@ appFilter.filter('setDecimal', function () {
     };
 });
 
+appFilter.filter('sumFilter', function() {
+     return function(input) {
+         var hrsTotalDone = 0;
+         for (i=0; i<input.length; i++) {
+             hrsTotalDone = hrsTotalDone + input[i]['hours'];    
+          };
+         return hrsTotalDone;
+     };
+ });
+

@@ -16,7 +16,30 @@
         $scope.changeTimekeeper = function changeTimekeeper(timekeeper) {
             $scope.selected.timekeeper = timekeeper;
             $scope.listCourses = Timekeeper.getCourses(timekeeper.$id);
-        };        
+            $scope.answers = $scope.listCourses.$loaded().then(function(data) {
+                var hoursSum = 0;
+                var hours = 'hours';
+                for (var i = 0; i < $scope.listCourses.length; i++) {
+                    hoursSum += parseFloat($scope.listCourses.$getRecord($scope.listCourses.$keyAt(i)).hours);
+                }
+                return hoursSum;
+            });
+            console.log($scope.answers);
+        };
+//            
+//        var hrsTotalDone = $filter('total')($scope.listCourses, hours);
+//        console.log($scope.listCourses.$getRecord($scope.listCourses.$keyAt(1)).hours);
+//        $scope.hrsDone = function(input) {
+//            input.$loaded().then(function(data) {
+//                var hoursSum = 0;
+//                for (var i = 0; i < input.length; i++) {
+//                    hoursSum += input.$getRecord(input.$keyAt(i)).hours;
+//                }
+//                return hoursSum;
+//            });
+//        };  
+        
+
         
         $scope.editTimekeeper = function editTimekeeper(timekeeper) {
            timekeeper.$save();
@@ -28,9 +51,9 @@
             })
         };
         
-        $scope.hrsTotalNeeded = function() {
-            return parseFloat(timekeeper.hrsReqTotal) - parseFloat($scope.hrsDone);
-        };
+//        $scope.hrsTotalNeeded = function() {
+//            return parseFloat(timekeeper.hrsReqTotal) - parseFloat($scope.hrsDone);
+//        };
         
 
         
