@@ -26,7 +26,21 @@
             });
             console.log($scope.answers);
         };
-//            
+        
+//        $scope.answers = $scope.listCourses.$loaded().then(function(data) {
+//            var hoursSum = 0;
+//            var hours = 'hours';
+//            for (var i = 0; i < $scope.listCourses.length; i++) {
+//                hoursSum += parseFloat($scope.listCourses.$getRecord($scope.listCourses.$keyAt(i)).hours);
+//            }
+//            return hoursSum;
+//            console.log($scope.answers);
+//        });
+//        
+//        $scope.answers.then(function(result) {
+//            return result;
+//        });
+////            
 //        var hrsTotalDone = $filter('total')($scope.listCourses, hours);
 //        console.log($scope.listCourses.$getRecord($scope.listCourses.$keyAt(1)).hours);
 //        $scope.hrsDone = function(input) {
