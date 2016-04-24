@@ -86,16 +86,30 @@
         </div>
     </div>
     
-    <div>
-        <div class="col s8 right">
-            <div class="totals " ng-show="timekeeper">
-                <h5><i class="small material-icons">query_builder</i> total time: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|total:'hours'|setDecimal:2}}</a> | hours needed: {{ timekeeper.hrsReqTotal }}</span></h5>
+    <div class="row" ng-show="timekeeper">
+        <div class="col s6 right">
+            <div class="totals">
+                <h5><i class="tiny material-icons">query_builder</i> total hours done: <span><a name="hrsDone" ng-model="hrsDone">{{totalHours | setDecimal:2}}</a> | hours needed: {{ hoursLeft(totalHours, timekeeper.hrsReqTotal) }}</span></h5>
                 <br>
-                <h6><i class="tiny material-icons">query_builder</i> total self-study time: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|filter:{study:'self-study'}|total:'hours'|setDecimal:2}}</a> | hours allowed: 12</span></h6>   
-                <h6><i class="tiny material-icons">query_builder</i> total legal ethics time: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|filter:{category:'legal ethics'}|total:'hours'|setDecimal:2}}</a> | hours needed: {{ timekeeper.hrsReqEthics }}</span></h6>
-                <h6><i class="tiny material-icons">query_builder</i> total competence time: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|filter:{category:'competence'}|total:'hours'|setDecimal:2}}</a> | hours needed: {{ timekeeper.hrsReqComp }}</span></h6>
-                <h6><i class="tiny material-icons">query_builder</i> total elim. of bias time: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|filter:{category:'elim. of bias'}|total:'hours'|setDecimal:2}}</a> | hours needed: {{ timekeeper.hrsReqBias }}</span></h6>
             </div>
+        </div>
+        <div class="col s6 left">
+            <div class="totals">
+                <h6><b>Sub-Requirements:</b></h6>
+                <h6><i class="tiny material-icons">query_builder</i> total self-study time done: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|filter:{study:'self-study'}|total:'hours'|setDecimal:2}}</a> | max hours allowed: 12</span></h6>   
+                <h6><i class="tiny material-icons">query_builder</i> total legal ethics time done: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|filter:{category:'legal ethics'}|total:'hours'|setDecimal:2}}</a> | min requirement: {{ timekeeper.hrsReqEthics }}</span></h6>
+                <h6><i class="tiny material-icons">query_builder</i> total competence time done: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|filter:{category:'competence'}|total:'hours'|setDecimal:2}}</a> | min requirement: {{ timekeeper.hrsReqComp }}</span></h6>
+                <h6><i class="tiny material-icons">query_builder</i> total elim. of bias time done: <span><a name="hrsDone" ng-model="hrsDone">{{listCourses|filter:{category:'elim. of bias'}|total:'hours'|setDecimal:2}}</a> | min requirement: {{ timekeeper.hrsReqBias }}</span></h6>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" ng-show="timekeeper">
+        <div class="col s12 left card red darken-4 white-text" ng-show="totalHours < timekeeper.hrsReqTotal">
+            <h6>Not in Compliance</h6>
+        </div>
+        <div class="col s12 card teal darken-3 white-text" ng-show="totalHours >= timekeeper.hrsReqTotal">
+            <h6>in Compliance</h6>
         </div>
     </div>
 </div>
