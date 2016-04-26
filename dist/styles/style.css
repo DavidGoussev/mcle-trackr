@@ -47,6 +47,14 @@ nav .brand-logo {
     font-weight: 300;
 }
 
+.modal-trigger .material-icons:hover {
+    color: grey;
+}
+
+.modal-title {
+    color: teal;
+}
+
 footer.page-footer .footer-copyright {
     overflow: hidden;
     height: 30px;

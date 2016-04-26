@@ -20,11 +20,15 @@
     <form name="courseForm" class="col s12" ng-show="timekeeper">
         <br>
         <div class="row">
-            <div class="input-field col s4">
+            <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
+            <button class="modal-trigger waves-effect waves-light btn" data-target="modal2">edit timekeeper</button>  
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
                 <input type="text" class="datepicker" ng-model="vm.dateIn" id="lblDate">
                 <label for="lblDate">activity date</label>
             </div>
-            <div class="input-field col s4">
+            <div class="input-field col s6">
                 <input class="validate" type="text" ng-model="vm.clockIn" id="lblHours" value="0.00" step="0.01" />
                 <label for="lblHours" data-error="must be valid integer">hours done (00.00)</label>
             </div>
@@ -59,9 +63,7 @@
         </div>
         <div class="row">
             <br>
-            <button class="waves-effect waves-light btn" ng-click="addCourse()">log activity time</button>
-            <button class="modal-trigger waves-effect waves-light btn" data-target="modal1">add timekeeper</button>
-            <button class="modal-trigger waves-effect waves-light btn" data-target="modal2">edit timekeeper</button>  
+            <button class="waves-effect waves-light btn" ng-click="addCourse()">log activity time</button> 
         </div>
     </form>
  
@@ -89,7 +91,7 @@
     <div class="row" ng-show="timekeeper">
         <div class="col s6 right">
             <div class="totals">
-                <h5><i class="tiny material-icons">query_builder</i> total hours done: <span><a name="hrsDone" ng-model="hrsDone">{{totalHours | setDecimal:2}}</a> | hours needed: {{ hoursLeft(totalHours, timekeeper.hrsReqTotal) }}</span></h5>
+                <h5><i class="tiny material-icons">query_builder</i> total hours done: <span><a name="hrsDone" ng-model="hrsDone">{{totalHours | setDecimal:2}}</a><br><br><i class="tiny material-icons">assignment_late</i> hours needed: {{ hoursLeft(totalHours, timekeeper.hrsReqTotal) }}</span></h5>
                 <br>
             </div>
         </div>
@@ -130,7 +132,7 @@
                 <i class="modal-trigger material-icons" data-target="modal1">group</i>
                 <p class="promo-caption">Select timekeeper to get started</p>
                 <p class="light center">
-                    Click on above icon to create new timekeeper, or select existing timekeeper from dropdown.
+                    Click on above icon to create new timekeeper, or select existing timekeeper from dropdown. All the necessary compliance info is available at a glance.
                 </p>
             </div>
         </div>
@@ -161,25 +163,25 @@
 <div ng-controller="ModalCtrl">
     <div id="modal1" class="modal">
         <div class="modal-content">
-            <h4>add timekeeper</h4>
+            <h6 class="modal-title"><b>add timekeeper</b></h6>
                 <div class="row">
-                    <div class="input-class col s8">
+                    <div class="input-class col s4">
                         <input id="lblUsername" class="form-control" type="email" ng-model="username">
                         <label for="lblUsername">enter email</label>  
                     </div>
-                    <div class="input-class col s1">
+                    <div class="input-class col s2">
                         <input id="lblHrsReqTotal" class="form-control" type="text" ng-model="hrsReqTotal">
                         <label for="lblHrsReqTotal">hrs_req</label>
                     </div>
-                    <div class="input-class col s1">
+                    <div class="input-class col s2">
                         <input id="lblHrsReqEthics" class="form-control" type="text" ng-model="hrsReqEthics">
                         <label for="lblHrsReqEthics">ethc</label>
                     </div>
-                    <div class="input-class col s1">
+                    <div class="input-class col s2">
                         <input id="lblHrsReqComp" class="form-control" type="text" ng-model="hrsReqComp">
                         <label for="lblHrsReqComp">comp</label>
                     </div>
-                    <div class="input-class col s1">
+                    <div class="input-class col s2">
                         <input id="lblHrsReqBias" class="form-control" type="text" ng-model="hrsReqBias">
                         <label for="lblHrsReqBias">bias</label>
                     </div>
@@ -208,25 +210,25 @@
 <div ng-controller="ModalCtrl">
    <div id="modal2" class="modal">
         <div class="modal-content">
-            <h4>edit timekeeper</h4>
+            <h6 class="modal-title"><b>edit timekeeper</b></h6>
                 <div class="row">
-                    <div class="input-class col s8">
+                    <div class="input-class col s4">
                         <input id="lblUsername" class="form-control" type="email" ng-model="timekeeper.username">
                         <label for="lblUsername">enter email</label>  
                     </div>
-                    <div class="input-class col s1">
+                    <div class="input-class col s2">
                         <input id="lblHrsReqTotal" class="form-control" type="text" ng-model="timekeeper.hrsReqTotal">
                         <label for="lblHrsReqTotal">hrs_req</label>
                     </div>
-                    <div class="input-class col s1">
+                    <div class="input-class col s2">
                         <input id="lblHrsReqEthics" class="form-control" type="text" ng-model="timekeeper.hrsReqEthics">
                         <label for="lblHrsReqEthics">ethc</label>
                     </div>
-                    <div class="input-class col s1">
+                    <div class="input-class col s2">
                         <input id="lblHrsReqComp" class="form-control" type="text" ng-model="timekeeper.hrsReqComp">
                         <label for="lblHrsReqComp">comp</label>
                     </div>
-                    <div class="input-class col s1">
+                    <div class="input-class col s2">
                         <input id="lblHrsReqBias" class="form-control" type="text" ng-model="timekeeper.hrsReqBias">
                         <label for="lblHrsReqBias">bias</label>
                     </div>
